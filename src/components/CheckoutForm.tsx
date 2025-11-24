@@ -47,20 +47,22 @@ const CheckoutForm = ({ cart, onBack, onComplete }: CheckoutFormProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 py-12 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-fuchsia-50 py-12 px-4 relative overflow-hidden">
+      <div className="absolute top-20 left-10 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-fuchsia-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style={{animationDelay: '1s'}} />
+      <div className="container mx-auto max-w-4xl relative z-10">
         <Button
           variant="ghost"
           onClick={onBack}
-          className="mb-6"
+          className="mb-6 hover:bg-purple-50 animate-fade-in"
         >
           <Icon name="ArrowLeft" size={20} className="mr-2" />
           Вернуться к покупкам
         </Button>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 animate-scale-in">
           <Card className="shadow-xl border-0">
-            <CardHeader className="bg-gradient-to-r from-blue-600 to-green-600 text-white">
+            <CardHeader className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white">
               <CardTitle>Оформление заказа</CardTitle>
             </CardHeader>
             
@@ -95,12 +97,12 @@ const CheckoutForm = ({ cart, onBack, onComplete }: CheckoutFormProps) => {
                   </p>
                 </div>
                 
-                <div className="p-4 bg-blue-50 rounded-lg space-y-2">
-                  <div className="flex items-center gap-2 text-blue-700">
+                <div className="p-4 bg-purple-50 rounded-lg space-y-2 animate-fade-in">
+                  <div className="flex items-center gap-2 text-purple-700">
                     <Icon name="Info" size={20} />
                     <span className="font-semibold">Что вы получите:</span>
                   </div>
-                  <ul className="space-y-1 text-sm text-blue-900 ml-7">
+                  <ul className="space-y-1 text-sm text-purple-900 ml-7">
                     <li>• Мгновенный доступ к таблицам</li>
                     <li>• Ссылки на email</li>
                     <li>• Инструкции по использованию</li>
@@ -113,7 +115,7 @@ const CheckoutForm = ({ cart, onBack, onComplete }: CheckoutFormProps) => {
                 <Button
                   type="submit"
                   disabled={isProcessing}
-                  className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all"
+                  className="w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
                 >
                   {isProcessing ? (
                     <>
@@ -131,18 +133,18 @@ const CheckoutForm = ({ cart, onBack, onComplete }: CheckoutFormProps) => {
             </form>
           </Card>
 
-          <Card className="shadow-xl border-0 h-fit">
-            <CardHeader className="bg-gray-50">
+          <Card className="shadow-xl border-0 h-fit animate-fade-in" style={{animationDelay: '0.2s'}}>
+            <CardHeader className="bg-purple-50">
               <CardTitle>Ваш заказ</CardTitle>
             </CardHeader>
             
             <CardContent className="space-y-4 pt-6">
               {cart.map(item => (
-                <div key={item.product.id} className="flex gap-3 pb-4 border-b last:border-0">
+                <div key={item.product.id} className="flex gap-3 pb-4 border-b last:border-0 hover:bg-purple-50 p-2 rounded-lg transition-all">
                   <img
                     src={item.product.image}
                     alt={item.product.name}
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-20 h-20 object-cover rounded-lg hover:scale-110 transition-transform"
                   />
                   
                   <div className="flex-1">
@@ -150,7 +152,7 @@ const CheckoutForm = ({ cart, onBack, onComplete }: CheckoutFormProps) => {
                     <p className="text-sm text-gray-600 mt-1">
                       {item.quantity} × {item.product.price.toLocaleString('ru-RU')} ₽
                     </p>
-                    <p className="text-sm font-semibold text-blue-600 mt-1">
+                    <p className="text-sm font-semibold text-purple-600 mt-1">
                       {(item.product.price * item.quantity).toLocaleString('ru-RU')} ₽
                     </p>
                   </div>
@@ -160,7 +162,7 @@ const CheckoutForm = ({ cart, onBack, onComplete }: CheckoutFormProps) => {
               <div className="pt-4 border-t-2">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold text-gray-900">Итого:</span>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent animate-pulse">
                     {total.toLocaleString('ru-RU')} ₽
                   </span>
                 </div>

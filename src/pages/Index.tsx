@@ -129,7 +129,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-fuchsia-50">
       <Hero />
       <ProductCatalog products={products} onAddToCart={addToCart} />
       <Cart

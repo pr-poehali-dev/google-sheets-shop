@@ -17,13 +17,13 @@ const Cart = ({ items, onRemove, onUpdateQuantity, onCheckout }: CartProps) => {
   if (items.length === 0) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 animate-slide-in-right">
-      <Card className="w-96 shadow-2xl border-0 bg-white">
-        <CardHeader className="bg-gradient-to-r from-blue-600 to-green-600 text-white">
+    <div className="fixed bottom-6 right-6 z-50 animate-bounce-in">
+      <Card className="w-96 shadow-2xl border-0 bg-white hover:shadow-purple-500/20 transition-all">
+        <CardHeader className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white">
           <CardTitle className="flex items-center gap-2">
             <Icon name="ShoppingCart" size={24} />
             Корзина
-            <Badge className="ml-auto bg-white text-blue-600 hover:bg-white">
+            <Badge className="ml-auto bg-white text-purple-600 hover:bg-white animate-bounce-in">
               {items.length}
             </Badge>
           </CardTitle>
@@ -31,11 +31,11 @@ const Cart = ({ items, onRemove, onUpdateQuantity, onCheckout }: CartProps) => {
         
         <CardContent className="space-y-3 max-h-96 overflow-y-auto pt-4">
           {items.map(item => (
-            <div key={item.product.id} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+            <div key={item.product.id} className="flex items-center gap-3 p-3 rounded-lg bg-purple-50 hover:bg-purple-100 transition-all hover:scale-105 animate-fade-in">
               <img
                 src={item.product.image}
                 alt={item.product.name}
-                className="w-16 h-16 object-cover rounded-lg"
+                className="w-16 h-16 object-cover rounded-lg hover:scale-110 transition-transform"
               />
               
               <div className="flex-1 min-w-0">
@@ -84,14 +84,14 @@ const Cart = ({ items, onRemove, onUpdateQuantity, onCheckout }: CartProps) => {
         <CardFooter className="flex-col gap-3 bg-gray-50">
           <div className="flex justify-between items-center w-full">
             <span className="text-lg font-semibold text-gray-900">Итого:</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent animate-pulse">
               {total.toLocaleString('ru-RU')} ₽
             </span>
           </div>
           
           <Button
             onClick={onCheckout}
-            className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all"
+            className="w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
           >
             Оформить заказ
             <Icon name="ArrowRight" size={18} className="ml-2" />
